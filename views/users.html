@@ -1,0 +1,18 @@
+  <table border="0">
+    <tr>
+      <th>id</th>
+      <th>full name</th>
+      <th>email</th>
+      <th>fb access token</th>
+    </tr>
+    
+    {{#each users}}
+      <tr>
+        <td>{{ this.id }}</td>
+        <td>{{this.full_name}}</td>
+        <td>{{this.email }}</td>
+        <td>{{this.fb_access_token}}</td>
+      </tr>
+        
+    {{/each}}
+  </table>

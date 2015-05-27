@@ -36,6 +36,13 @@
       // code below.
       function checkLoginState() {
         FB.getLoginStatus(function(response) {
+          var accessToken = response.authResponse.accessToken;
+          var obj = { accessToken: accessToken };
+          $.post('/store-access-token', obj, function (response) {
+            console.log(response);
+            alert('User ' + response.id + '\'s token has been succesfully stored.');
+            alert('accessToken: ' + accessToken);
+          });
           statusChangeCallback(response);
         });
       }
@@ -62,11 +69,6 @@
         // These three cases are handled in the callback function.
 
         FB.getLoginStatus(function(response) {
-          var accessToken = response.authResponse.accessToken;
-          var obj = { accessToken: accessToken };
-          $.post('/store-access-token', obj, function (response) {
-            console.log(response);
-          });
           statusChangeCallback(response);
         });
 
